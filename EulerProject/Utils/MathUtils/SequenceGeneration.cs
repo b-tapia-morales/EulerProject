@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Numerics;
+﻿using System.Numerics;
 using EulerProject.Utils.MathUtils.PrimalityTestUtils;
 
 namespace EulerProject.Utils.MathUtils;

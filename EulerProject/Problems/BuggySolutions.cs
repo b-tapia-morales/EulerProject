@@ -77,7 +77,7 @@ public static class BuggySolutions
             }
         }
 
-        return denominator / Factorization.Gcd(numerator, denominator);
+        return denominator / MathUtils.Gcd(numerator, denominator);
     }
 
     public static int EightyOne(int n = 80)

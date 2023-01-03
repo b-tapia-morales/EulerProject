@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using static System.Math;
+﻿using static System.Math;
 
 // ReSharper disable TailRecursiveCall
 
@@ -7,16 +6,6 @@ namespace EulerProject.Utils.MathUtils;
 
 public static class Factorization
 {
-    public static T Min<T>(params T[] numbers) where T : INumber<T> => numbers.Min() ?? T.Zero;
-
-    public static T Max<T>(params T[] numbers) where T : INumber<T> => numbers.Max() ?? T.Zero;
-
-    public static int Gcd(IEnumerable<int> numbers) =>
-        numbers.Aggregate(Gcd);
-
-    public static int Gcd(int a, int b) =>
-        b == 0 ? a : Gcd(b, a % b);
-
     public static IEnumerable<long> FindFactors(long n, bool skipLast = true)
     {
         IEnumerable<long> GenerateSequence(long m)
