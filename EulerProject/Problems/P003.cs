@@ -13,5 +13,5 @@ public class P003 : ISolvable<long>, ISequential<long, KeyValuePair<long, int>>
     public static IEnumerable<long> Sequence() => RawSequence().Select(e => e.Key);
 
     public static IEnumerable<KeyValuePair<long, int>> RawSequence() =>
-        MathUtils.FindPrimeFactors(N);
+        Factorization.FindPrimeFactors(N);
 }

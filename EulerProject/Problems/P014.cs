@@ -16,5 +16,5 @@ public class P014 : ISolvable<int>, ISequential<BigInteger, KeyValuePair<int, IE
         RawSequence().MaxBy(e => e.Value.Count()).Value;
 
     public static IEnumerable<KeyValuePair<int, IEnumerable<BigInteger>>> RawSequence() =>
-        Enumerable.Range(1, N).ToDictionary(e => e, e => MathUtils.CollatzSequence(e));
+        Enumerable.Range(1, N).ToDictionary(e => e, e => SequenceGeneration.Collatz(e));
 }

@@ -23,7 +23,7 @@ public class Problem005 : ISolvable<BigInteger>, ISequential<BigInteger, KeyValu
             if (dictionary.ContainsKey(i))
                 continue;
 
-            foreach (var (b, n) in MathUtils.FindPrimeFactors(i))
+            foreach (var (b, n) in Factorization.FindPrimeFactors(i))
             {
                 if (dictionary[b] < n)
                     dictionary[b] = n;

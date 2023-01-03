@@ -15,7 +15,7 @@ public class P021 : ISolvable<int>, ISequential<int, KeyValuePair<int, int>>
     public static IEnumerable<KeyValuePair<int, int>> RawSequence()
     {
         var dictionary =
-            Enumerable.Range(2, N - 2).ToDictionary(e => e, e => (int) MathUtils.FindFactors(e).Sum());
+            Enumerable.Range(2, N - 2).ToDictionary(e => e, e => (int) Factorization.FindFactors(e).Sum());
         foreach (var (oldKey, oldValue) in dictionary)
         {
             if (dictionary.TryGetValue(oldValue, out var newKey) && dictionary.TryGetValue(newKey, out var newValue) &&

@@ -13,5 +13,5 @@ public class P002 : ISolvable<int>, ISequential<int, int>
     public static IEnumerable<int> Sequence() => RawSequence();
 
     public static IEnumerable<int> RawSequence() =>
-        MathUtils.FibonacciSequence(x => x <= N).Select(e => (int) e).Where(x => x % 2 == 0);
+        SequenceGeneration.Fibonacci(x => x <= N).Select(e => (int) e).Where(x => x % 2 == 0);
 }

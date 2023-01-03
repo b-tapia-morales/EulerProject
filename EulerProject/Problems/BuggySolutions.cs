@@ -77,7 +77,7 @@ public static class BuggySolutions
             }
         }
 
-        return denominator / MathUtils.Gcd(numerator, denominator);
+        return denominator / Factorization.Gcd(numerator, denominator);
     }
 
     public static int EightyOne(int n = 80)
@@ -109,13 +109,13 @@ public static class BuggySolutions
         var list = new List<long>();
         for (var i = 3L; i <= n; i++)
         {
-            var primeFactorizations = MathUtils.FindPrimeFactors(i);
+            var primeFactorizations = Factorization.FindPrimeFactors(i);
             if (primeFactorizations.Values.Any(v => v < 2) || primeFactorizations.Values.All(v => v % 2 == 0))
                 continue;
 
             var primes = primeFactorizations.Keys;
             var eulerTotient = (long) primes.Select(p => 1D - (1D / p)).Aggregate((double) i, (x, y) => x * y);
-            var eulerFactorizations = MathUtils.FindPrimeFactors(eulerTotient);
+            var eulerFactorizations = Factorization.FindPrimeFactors(eulerTotient);
             if (eulerFactorizations.Values.Any(v => v < 2) || eulerFactorizations.Values.All(v => v % 2 == 0))
                 continue;
 

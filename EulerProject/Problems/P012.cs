@@ -13,5 +13,5 @@ public class P012 : ISolvable<long>, ISequential<long, long>
     public static IEnumerable<long> Sequence() => RawSequence();
 
     public static IEnumerable<long> RawSequence() =>
-        MathUtils.TriangleSequence(short.MaxValue).Select(e => MathUtils.FindFactors(e)).First(e => e.Count() > N);
+        SequenceGeneration.TriangularNumbers(short.MaxValue).Select(e => Factorization.FindFactors(e)).First(e => e.Count() > N);
 }

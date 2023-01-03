@@ -15,7 +15,7 @@ public class P025 : ISolvable<int>, ISequential<BigInteger, KeyValuePair<int, Bi
     public static IEnumerable<BigInteger> Sequence() => RawSequence().Select(e => e.Value);
 
     public static IEnumerable<KeyValuePair<int, BigInteger>> RawSequence() =>
-        MathUtils.FibonacciSequence(x => Floor(BigInteger.Log10(x) + 1) < Digits)
+        SequenceGeneration.Fibonacci(x => Floor(BigInteger.Log10(x) + 1) < Digits)
             .Select((e, i) => (Index: i, Number: e))
             .ToDictionary(e => e.Index, e => e.Number);
 }

@@ -11,5 +11,5 @@ public class P041 : ISolvable<int>, ISequential<int, int>
     public static IEnumerable<int> Sequence() => RawSequence();
 
     public static IEnumerable<int> RawSequence() =>
-        Enumerable.Range(4, 6).SelectMany(e => PandigitalUtils.PandigitalPrimeSequence(e, true));
+        Enumerable.Range(4, 6).SelectMany(e => SequenceGeneration.PandigitalPrimes(e, true));
 }
