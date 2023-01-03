@@ -54,17 +54,18 @@ public static class TrigonometryUtils
 
         for (var i = 0; i <= n; i++)
         {
-            for (int j = 1, index = ((int) Pow(3, i - 1) - 1) / 2; j <= Pow(3, i - 1); j++, index++)
+            var index = (int) (Pow(3, i - 1) - 1) / 2;
+            var columnMatrix = list[index];
+            for (var j = 1; j <= Pow(3, i - 1); j++, index++)
             {
-                var columnMatrix = list[index];
                 list.Add(AMatrix.Multiply(columnMatrix));
                 list.Add(BMatrix.Multiply(columnMatrix));
                 list.Add(CMatrix.Multiply(columnMatrix));
             }
         }
 
-        return list.Select(m => Array.ConvertAll(m.AsRowMajorArray(), x => (int) x))
-            .Select(arr => (A: arr[0], B: arr[1], C: arr[2]));
+        return list.Select(m => Array.ConvertAll(m.ToRowMajorArray(), x => (int) x))
+            .Select(arr => (A: Min(arr[0], arr[1]), B: Max(arr[0], arr[1]), C: arr[2]));
     }
 
     public static IEnumerable<(int, int, int)> BerggrensTripletLevel(int n)
@@ -95,7 +96,7 @@ public static class TrigonometryUtils
             }
         }
 
-        return queue.Select(m => Array.ConvertAll(m.AsRowMajorArray(), x => (int) x))
-            .Select(arr => (A: arr[0], B: arr[1], C: arr[2]));
+        return queue.Select(m => Array.ConvertAll(m.ToRowMajorArray(), x => (int) x))
+            .Select(arr => (A: Min(arr[0], arr[1]), B: Max(arr[0], arr[1]), C: arr[2]));
     }
 }
