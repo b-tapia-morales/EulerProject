@@ -23,4 +23,12 @@ public static class MathUtils
 
     public static int Gcd(int a, int b) =>
         b == 0 ? a : Gcd(b, a % b);
+
+    public static BigInteger Factorial(int n)
+    {
+        if (n < 0)
+            throw new ArgumentException("Negative values are not allowed");
+        return n <= 1 ? BigInteger.One : Enumerable.Range(1, n).Aggregate(1, (x, y) => x * y);
+    }
+        
 }

@@ -30,22 +30,6 @@ public interface IPrimalityTest
         return list;
     }
 
-    public static IEnumerable<int> Generate(Predicate<int> predicate, Func<IEnumerable<int>, int, int> inc)
-    {
-        var list = new List<int> {2};
-        var aggregate = 2;
-        for (var i = 3; predicate(aggregate); i += 2)
-        {
-            if (!CheckIsPrime(i))
-                continue;
-
-            list.Add(i);
-            aggregate = inc.Invoke(list, aggregate);
-        }
-
-        return list.SkipLast(1);
-    }
-
     bool IsPrime(long n);
 }
 

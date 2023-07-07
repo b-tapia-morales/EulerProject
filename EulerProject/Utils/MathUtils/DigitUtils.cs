@@ -6,7 +6,7 @@ public static class DigitUtils
 {
     public static int DigitCount(int x) => x == 0 ? 1 : (int) Log10(Abs(x)) + 1;
 
-    public static IEnumerable<int> DigitArray(int x)
+    public static IEnumerable<int> ToDigitArray(int x)
     {
         if (x == 0)
             return Enumerable.Repeat(0, 1);
@@ -23,7 +23,7 @@ public static class DigitUtils
         return array;
     }
 
-    public static int DigitSum(int x) => x == 0 ? 0 : DigitArray(x).Sum();
+    public static int DigitSum(int x) => x == 0 ? 0 : ToDigitArray(x).Sum();
 
     public static IEnumerable<int> Truncate(int x, TruncatingMethod method, bool skipOriginalValue = true)
     {
@@ -37,6 +37,22 @@ public static class DigitUtils
             _ => throw new ArgumentOutOfRangeException(nameof(method), method, "Method choice is invalid")
         };
         return enumerable;
+    }
+
+    public static IEnumerable<int> ToChunks(int x, int digits) => ToChunks((long) x, digits).Select(e => (int) e);
+
+    public static IEnumerable<long> ToChunks(long x, int digits)
+    {
+        var n = DigitCount((int) x);
+        if (n < digits)
+        {
+            throw new ArgumentException();
+        }
+
+        var str = x.ToString();
+        return n == digits
+            ? Enumerable.Repeat(x, 1)
+            : Enumerable.Range(0, n - (digits - 1)).Select(i => str[i..(i + digits)]).Select(long.Parse);
     }
 
     private static IEnumerable<int> TruncateLeftToRight(int x, bool skipOriginalValue = true)

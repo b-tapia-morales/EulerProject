@@ -36,7 +36,7 @@ public static class TrigonometryUtils
         {-2, +2, +3}
     });
 
-    public static IEnumerable<(int, int, int)> BerggrensTripletTree(int n)
+    public static IEnumerable<(int A, int B, int C)> BerggrensTripletTree(int n)
     {
         switch (n)
         {
@@ -68,7 +68,7 @@ public static class TrigonometryUtils
             .Select(arr => (A: Min(arr[0], arr[1]), B: Max(arr[0], arr[1]), C: arr[2]));
     }
 
-    public static IEnumerable<(int, int, int)> BerggrensTripletLevel(int n)
+    public static IEnumerable<(int A, int B, int C)> BerggrensTripletLevel(int n)
     {
         switch (n)
         {

@@ -18,7 +18,7 @@ public interface IPrimeSequence
             Method.Euler => Euler.GenerateBitArray(limit),
             _ => throw new ArgumentOutOfRangeException(nameof(method), method, "Method choice is invalid")
         };
-        return Enumerable.Range(0, limit).Where(i => (i == 2) || (i % 2 != 0 && sieve.Get(i)));
+        return Enumerable.Range(0, limit + 1).Where(i => (i == 2) || (i % 2 != 0 && sieve.Get(i)));
     }
 
     public static BitArray GenerateSieve(int limit, Method method = Method.Euler)
